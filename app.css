@@ -63,11 +63,37 @@ body{
     border-left: 2px solid #000;
     border-right: 2px solid #000; */
 }
-.container .list{
+.container .tasks{
     background-color: #003566;
     width: 400px;
     min-height: 100px;
     /* border-bottom: 2px solid #000;
     border-left: 2px solid #000;
     border-right: 2px solid #000; */
+}
+
+.task{
+    background: #003566;
+    height: 50px;
+    padding: 5px 10px;
+    border-radius: 0px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    
+}
+.task span{
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.task button{
+    border: none;
+    background-color: green;
+    cursor: pointer;
+}
+.completed{
+    text-decoration: line-through;
+    opacity: 0.7;
 }
