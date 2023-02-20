@@ -10,21 +10,19 @@ body{
 
   }
   .container{
-    min-height: 60vh;
+   margin-top: 10vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .container .title{
-   height: 50px;
-  }
+ 
 .header{
    display: flex;
    /* border: 2px solid #000; */
 }
 .header input{
-    width: 360px;
+    width: 455px;
     height: 45px;
     background-color: #457b9d;
     border: none;
@@ -41,7 +39,7 @@ body{
    
 }
 .header button{
-    width: 40px;
+    width: 45px;
     height: 45px;
     background-color: #00b4d8;
     font-size: 25px;
@@ -50,8 +48,8 @@ body{
 }
 .container .title{
     background-color: #606c38;
-    width: 400px;
-    min-height: 30px;
+    width: 500px;
+    min-height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,8 +63,8 @@ body{
 }
 .container .tasks{
     background-color: #003566;
-    width: 400px;
-    min-height: 100px;
+    width: 500px;
+    min-height: 120px;
     /* border-bottom: 2px solid #000;
     border-left: 2px solid #000;
     border-right: 2px solid #000; */
@@ -74,7 +72,7 @@ body{
 
 .task{
     background: #003566;
-    height: 50px;
+    height: 60px;
     padding: 5px 10px;
     border-radius: 0px ;
     display: flex;
@@ -94,7 +92,8 @@ body{
     background-color: #003566;
     cursor: pointer;
 }
-.completed{
+.completed {
     text-decoration: line-through;
-    opacity: 0.7;
+    opacity: 0.5;
+    
 }

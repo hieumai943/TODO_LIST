@@ -34,11 +34,13 @@
             else {
                 document.querySelector('.tasks').innerHTML
                     += `<div class="task">
+                        
                     <span id="taskname">
-                        ${document.querySelector(".header input").value}
+                        <i class="fa fa-circle" aria-hidden="true"style="font-size:10px;padding-right: 10px;"></i>
+                      ${document.querySelector(".header input").value}
                         </span>
                         <button class="delete">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            <i class="fa fa-trash-o" aria-hidden="true" ></i>
                             </button>
                             </div>`
                             
