@@ -1,6 +1,18 @@
 const inputVal = document.getElementsByClassName('inputVal')[0];
 const addTaskBtn = document.getElementsByClassName('btn')[0];
 let tasklist;
+function displayDate(){
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var day = date.getDate();
+   
+    document.querySelector(".title").innerHTML += `${day}/${month}/${year}`;
+
+}
+displayDate();
+
+
 addTaskBtn.addEventListener('click', () => {
     if (document.querySelector('.header input').value.length == 0) {
         alert("Please Enter a Task");
@@ -61,3 +73,4 @@ function completed(index) {
     }, 2000)
 
 }
+
