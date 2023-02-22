@@ -1,6 +1,8 @@
 const inputVal = document.getElementsByClassName('inputVal')[0];
 const addTaskBtn = document.getElementsByClassName('btn')[0];
 let tasklist;
+let complete = [];
+
 function displayDate(){
     var date = new Date();
     var year = date.getFullYear();
@@ -12,25 +14,41 @@ function displayDate(){
 }
 displayDate();
 
+function addItem(){
 
+    let localItems = JSON.parse(localStorage.getItem('localItem'))
+    if (localItems === null) {
+        tasklist = [];
+    }
+    else {
+        tasklist = localItems;
+    }
+    tasklist.push(inputVal.value);
+    localStorage.setItem('localItem', JSON.stringify(tasklist))
+    showlist();
+}
+document.querySelector('.header input').addEventListener("keydown", (event)=>{
+    if(event.key =="Enter"){
+        if (document.querySelector('.header input').value.length == 0) {
+            alert("Please Enter a Task");
+        }
+        else {
+            
+           addItem();
+        }
+    }
+})
 addTaskBtn.addEventListener('click', () => {
     if (document.querySelector('.header input').value.length == 0) {
         alert("Please Enter a Task");
     }
     else {
-        let localItems = JSON.parse(localStorage.getItem('localItem'))
-        if (localItems === null) {
-            tasklist = [];
-        }
-        else {
-            tasklist = localItems;
-        }
-        tasklist.push(inputVal.value);
-        localStorage.setItem('localItem', JSON.stringify(tasklist))
-        showlist();
+        
+       addItem();
     }
 })
 function showlist() {
+    
     let outPut = ``;
     let localItems = JSON.parse(localStorage.getItem('localItem'));
     if (localItems === null) {
@@ -40,6 +58,7 @@ function showlist() {
         tasklist = localItems;
     }
     tasklist.forEach((data, index) => {
+      
         outPut +=
             `<div class="task">
         
@@ -51,7 +70,9 @@ function showlist() {
                 <i class="fa fa-trash-o" aria-hidden="true" ></i>
                 </button>
                 </div>`
-    });
+        
+    }); 
+   
     document.querySelector('.tasks').innerHTML = outPut;
 }
 showlist();
@@ -59,10 +80,14 @@ showlist();
 function deleteItem(index) {
     tasklist.splice(index, 1)
     localStorage.setItem('localItem', JSON.stringify(tasklist))
+    
     showlist();
 }
 
+
 function completed(index) {
+    
+   complete.push(index);
     var tasks = document.querySelectorAll('#taskname');
     tasks[index].classList.toggle('completed');
 
@@ -70,7 +95,7 @@ function completed(index) {
         tasklist.splice(index, 1)
         localStorage.setItem('localItem', JSON.stringify(tasklist))
         showlist();
-    }, 2000)
+    }, 3000)
 
 }
 
