@@ -7,7 +7,7 @@ function displayDate(){
     var month = date.getMonth();
     var day = date.getDate();
    
-    document.querySelector(".title").innerHTML += `${day}/${month}/${year}`;
+    document.querySelector(".date").innerHTML += `DATE: ${day} / ${month+1} / ${year}`;
 
 }
 displayDate();
