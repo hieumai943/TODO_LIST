@@ -3,18 +3,18 @@ const addTaskBtn = document.getElementsByClassName('btn')[0];
 let tasklist;
 let complete = [];
 
-function displayDate(){
+function displayDate() {
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth();
     var day = date.getDate();
-   
-    document.querySelector(".date").innerHTML += `DATE: ${day} / ${month+1} / ${year}`;
+
+    document.querySelector(".date").innerHTML += `DATE: ${day} / ${month + 1} / ${year}`;
 
 }
 displayDate();
 
-function addItem(){
+function addItem() {
 
     let localItems = JSON.parse(localStorage.getItem('localItem'))
     if (localItems === null) {
@@ -27,14 +27,14 @@ function addItem(){
     localStorage.setItem('localItem', JSON.stringify(tasklist))
     showlist();
 }
-document.querySelector('.header input').addEventListener("keydown", (event)=>{
-    if(event.key =="Enter"){
+document.querySelector('.header input').addEventListener("keydown", (event) => {
+    if (event.key == "Enter") {
         if (document.querySelector('.header input').value.length == 0) {
             alert("Please Enter a Task");
         }
         else {
-            
-           addItem();
+
+            addItem();
         }
     }
 })
@@ -43,12 +43,12 @@ addTaskBtn.addEventListener('click', () => {
         alert("Please Enter a Task");
     }
     else {
-        
-       addItem();
+
+        addItem();
     }
 })
 function showlist() {
-    
+
     let outPut = ``;
     let localItems = JSON.parse(localStorage.getItem('localItem'));
     if (localItems === null) {
@@ -58,7 +58,7 @@ function showlist() {
         tasklist = localItems;
     }
     tasklist.forEach((data, index) => {
-      
+
         outPut +=
             `<div class="task">
         
@@ -70,32 +70,73 @@ function showlist() {
                 <i class="fa fa-trash-o" aria-hidden="true" ></i>
                 </button>
                 </div>`
-        
-    }); 
-   
+
+    });
+
     document.querySelector('.tasks').innerHTML = outPut;
 }
 showlist();
-
+addFinish();
+showOutPut();
 function deleteItem(index) {
     tasklist.splice(index, 1)
     localStorage.setItem('localItem', JSON.stringify(tasklist))
-    
+
     showlist();
 }
 
 
 function completed(index) {
-    
-   complete.push(index);
+
+    complete.push(index);
     var tasks = document.querySelectorAll('#taskname');
     tasks[index].classList.toggle('completed');
 
     setTimeout(function () {
+        
+      
+        let finishedItem = JSON.parse(localStorage.getItem('finishedItem'))
+        if (finishedItem === null) {
+            finishlist = [];
+        }
+        else {
+            finishlist = finishedItem;
+        }
+        finishlist.push(tasklist[index]);
+        localStorage.setItem('finishedItem', JSON.stringify(finishlist));
+        showOutPut();
         tasklist.splice(index, 1)
         localStorage.setItem('localItem', JSON.stringify(tasklist))
         showlist();
-    }, 3000)
+
+    }, 1000)
 
 }
-
+function addFinish(){
+    let finishedItem = JSON.parse(localStorage.getItem('finishedItem'))
+if (finishedItem === null) {
+    finishlist = [];
+}
+else {
+    finishlist = finishedItem;
+}
+  
+}
+function showOutPut() {
+    
+        
+    finishOutput = ``;
+    finishlist.forEach((data, index) => {
+        finishOutput +=
+            `<div class="task" style="background-color: grey;">
+        <span id="taskname" >
+            <i class="fa fa-circle" aria-hidden="true"style="font-size:10px;padding-right: 10px;"></i>
+          ${finishlist[index]}
+            </span>
+            <div>
+            <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                </div>`
+    })
+    document.querySelector('.finished').innerHTML = finishOutput;
+}

@@ -109,3 +109,8 @@ body{
     opacity: 0.5;
     
 }
+.finished{
+    background-color: gray;
+    width: 500px;
+    min-height: 100px;
+}
