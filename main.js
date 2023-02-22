@@ -84,6 +84,11 @@ function deleteItem(index) {
 
     showlist();
 }
+function deleteFinish(index){
+    finishlist.splice(index,1);
+    localStorage.setItem('finishedItem', JSON.stringify(finishlist));
+    showOutPut();
+}
 
 
 function completed(index) {
@@ -133,9 +138,9 @@ function showOutPut() {
             <i class="fa fa-circle" aria-hidden="true"style="font-size:10px;padding-right: 10px;"></i>
           ${finishlist[index]}
             </span>
-            <div>
+            <button class="delete" onClick="deleteFinish(${index})">
             <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
+                </button>
                 </div>`
     })
     document.querySelector('.finished').innerHTML = finishOutput;
