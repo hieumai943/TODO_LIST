@@ -127,9 +127,7 @@ else {
 }
   
 }
-function showOutPut() {
-    
-        
+function showOutPut() {  
     finishOutput = ``;
     finishlist.forEach((data, index) => {
         finishOutput +=
