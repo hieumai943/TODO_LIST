@@ -131,13 +131,14 @@ function showOutPut() {
     finishOutput = ``;
     finishlist.forEach((data, index) => {
         finishOutput +=
-            `<div class="task" style="background-color: grey;">
-        <span id="taskname" >
-            <i class="fa fa-circle" aria-hidden="true"style="font-size:10px;padding-right: 10px;"></i>
+            `<div class="taskBot" >
+        <span id="taskname" style="color: #000;" >
+            <i class="fa fa-circle" aria-hidden="true"style="font-size:10px;padding-right: 10px;color: #000;"></i>
           ${finishlist[index]}
             </span>
             <button class="delete" onClick="deleteFinish(${index})">
-            <i class="fa fa-check" aria-hidden="true"></i>
+            <i class="fa fa-check" aria-hidden="true" style="color: #000;"></i>
+            <i class="fa fa-trash-o" aria-hidden="true" style="margin-left: 10px;color: #000;"></i>
                 </button>
                 </div>`
     })
